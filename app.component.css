@@ -1,0 +1,21 @@
+ul {
+    list-style-position: none;
+    padding-left:0;
+}
+.taskDiv {
+    width: 200px;
+    height: auto;
+    border: 2px solid black;
+    text-align: center;
+}
+.inlinep {
+    display: inline-block;
+    margin: 0px 0px 15px 0px;
+}
+.main {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    height: auto;
+    margin-left: 50px;
+}

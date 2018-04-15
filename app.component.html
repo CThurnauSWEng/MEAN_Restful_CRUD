@@ -1,0 +1,53 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+  <h1 *ngIf="tasks_present">
+    All the tasks:
+  </h1>
+  
+  <div class="main">
+    <ul *ngIf="tasks_present">
+      <li *ngFor="let task of tasks">
+        <div class="taskDiv">  
+          <p>{{ task.title }}</p>
+          <p id="{{ task._id}}" class="inlinep" ><button (click)="editTask($event)">Edit</button></p>
+          <p id="{{ task._id}}" class="inlinep" ><button (click)="deleteTask($event)">Delete</button></p>
+        </div>
+      </li>
+    </ul>
+    <h1 *ngIf="tasks_present">The third task:</h1>
+    <p *ngIf="tasks_present">{{tasks[2].title}}</p>
+  </div>
+  <div class="main">
+    <form *ngIf="display_edit_form" (submit)="editSubmit($event)">
+        <p> {{ taskToEdit | json }} </p>
+      <input type="text" name="taskToEdit.title"  [(ngModel)]="taskToEdit.title" />
+      <input type="text" name="taskToEdit.description" [(ngModel)]="taskToEdit.description" />
+      <input type="text" name="taskToEdit._id" [(ngModel)]="taskToEdit._id" />
+      <input type="submit" value="Submit Changes" />
+    </form>
+  </div>
+
+  <div>
+
+    
+    <button (click)="refetchTasks()">Refetch Tasks</button>
+    
+    <button (click)="onButtonClickEvent($event)">Click me to console log the button click event!</button>
+    <p></p>
+    <button (click)="deleteTempTask()">Click me delete hard coded task</button>
+    
+  
+    
+    <form (submit)="onSubmit()">
+      <!-- use the json pipe to see how newTask changes in real time -->
+      <p> {{ newTask | json }} </p>
+      <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
+      <input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
+      <input type="submit" value="Create Task" />
+    </form>
+  </div>
+  
+
